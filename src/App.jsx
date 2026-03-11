@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
 import Dashboard from './components/Dashboard';
@@ -27,17 +27,13 @@ function App() {
           Elle cassera lors de la mise à jour vers v6.
         */}
         <div className="content">
-          <Switch>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/dashboard">
-              <Dashboard />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
-          </Switch>
+          <Routes>
+            <Route path="/about" element={<About />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/" element={<Home />} />
+
+            <Route path="*" element={<Home />} />
+          </Routes>
         </div>
       </div>
     </Router>
